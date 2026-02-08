@@ -1,0 +1,21 @@
+{
+  "name": "gofytt-website-new",
+  "version": "1.0.0",
+  "description": "GoFytt Fitness Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=8080 --open=/index.html",
+    "serve": "npx serve -l 8080",
+    "dev": "live-server --port=8080 --open=/index.html"
+  },
+  "keywords": [
+    "fitness",
+    "gym",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
