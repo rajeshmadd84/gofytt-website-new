@@ -159,9 +159,21 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
+        .prism-layout {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 30px;
+        }
         .prism-container {
             position: relative;
             width: 480px;
+            min-width: 480px;
             height: 420px;
             perspective: 1000px;
         }
@@ -279,6 +291,76 @@
             color: rgba(255,255,255,0.9);
             text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
+        .prism-right-panel {
+            flex: 1;
+            max-width: 420px;
+            position: relative;
+        }
+        .prism-right-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+        }
+        .prism-right-slide.active {
+            position: relative;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .prism-right-slide .prism-right-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .prism-right-slide h3 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        .prism-right-slide .prism-right-divider {
+            height: 3px;
+            width: 50px;
+            margin-bottom: 20px;
+            transition: background-color 0.5s;
+        }
+        .prism-right-slide p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0;
+        }
+        @media (max-width: 991px) {
+            .prism-layout {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .prism-container {
+                min-width: unset;
+                width: 380px;
+                height: 340px;
+            }
+            .prism-right-panel {
+                max-width: 500px;
+                text-align: center;
+            }
+            .prism-right-slide .prism-right-divider {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
         @media (max-width: 768px) {
             .prism-container {
                 width: 340px;
@@ -289,6 +371,9 @@
             }
             .prism-content h3 {
                 font-size: 3rem;
+            }
+            .prism-right-slide h3 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -434,7 +519,7 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <h1 class="fs-150 fs-sm-10vw mb-3 lh-1 animated fadeInUp hero-strikethrough fw-bold">It's Not Fitness.</h1>
+                                <h1 class="fs-150 fs-sm-10vw mb-3 lh-1 animated fadeInUp  fw-bold">It's Not Fitness.</h1>
 
                                 <h2 class="fs-150 fs-sm-10vw mb-2 lh-1">
                                     <span class="rotating-text active">It's Life</span>
@@ -522,6 +607,8 @@
                 <p>Body - Mind - Bond - Gofytt.</p>
             </div>
             
+            <!-- Prism Layout: Prism + Right Content -->
+            <div class="prism-layout">
             <!-- 3D Prism Container -->
             <div class="prism-container" id="prism-container">
                 <div class="prism-card" id="prism-card">
@@ -577,6 +664,35 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Right Side Content Panel -->
+            <div class="prism-right-panel" id="prism-right-panel">
+                <div class="prism-right-slide active" id="prism-right-0">
+                    <span class="prism-right-tag" style="background: rgba(251,86,7,0.15); color: #fb5607;">BODY</span>
+                    <h3>Unleash Your<br>Physical Power</h3>
+                    <div class="prism-right-divider" style="background-color: #fb5607;"></div>
+                    <p>Push your limits with high-intensity training designed to build strength, endurance, and resilience. Transform your body through expertly crafted workout programs that challenge and inspire.</p>
+                </div>
+                <div class="prism-right-slide" id="prism-right-1">
+                    <span class="prism-right-tag" style="background: rgba(141,217,255,0.15); color: #8dd9ff;">MIND</span>
+                    <h3>Find Inner<br>Clarity &amp; Focus</h3>
+                    <div class="prism-right-divider" style="background-color: #8dd9ff;"></div>
+                    <p>Cultivate mental strength through mindfulness practices, yoga, and meditation. Achieve the balance between effort and ease that fuels both your workouts and your everyday life.</p>
+                </div>
+                <div class="prism-right-slide" id="prism-right-2">
+                    <span class="prism-right-tag" style="background: rgba(95,247,182,0.15); color: #5ff7b6;">SOCIAL</span>
+                    <h3>Build Lasting<br>Community Bonds</h3>
+                    <div class="prism-right-divider" style="background-color: #5ff7b6;"></div>
+                    <p>Fitness is better together. Join a vibrant community of like-minded individuals who motivate, support, and celebrate each other's journey toward a healthier lifestyle.</p>
+                </div>
+                <div class="prism-right-slide" id="prism-right-3">
+                    <span class="prism-right-tag" style="background: rgba(255,255,255,0.15); color: #ffffff;">GOFYTT</span>
+                    <h3>The Complete<br>Fitness Experience</h3>
+                    <div class="prism-right-divider" style="background-color: #ffffff;"></div>
+                    <p>GoFytt brings body, mind, and social wellness together into one holistic platform. Experience fitness the way it was meant to be — complete, connected, and transformative.</p>
+                </div>
+            </div>
+            </div><!-- end prism-layout -->
         </section>
 
 
@@ -1036,6 +1152,7 @@
             const title = document.getElementById('prism-title');
             const subtitle = document.getElementById('prism-subtitle');
             const line = document.getElementById('prism-line');
+            const rightSlides = document.querySelectorAll('.prism-right-slide');
             
             if (!container) return;
             
@@ -1091,6 +1208,15 @@
                 var triangles = trianglesContainer.querySelectorAll('.prism-triangle');
                 triangles.forEach(function(tri) {
                     tri.style.backgroundColor = current.color;
+                });
+
+                // Update right panel slides
+                rightSlides.forEach(function(slide, i) {
+                    if (i === activeState) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
                 });
             }
             
